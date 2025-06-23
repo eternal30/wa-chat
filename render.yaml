@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: wa-chat
+    env: python
+    buildCommand: ""
+    startCommand: "python app.py"
