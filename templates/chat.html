@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>WA Clone Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">WA Clone Chat</div>
+    
+    <div class="chat-box">
+        {% for chat in chats %}
+            <div class="chat-message {{ 'me' if chat.sender == 'Saya' else 'other' }}">
+                <div class="message">
+                    <div class="text">{{ chat.message }}</div>
+                    <div class="time">{{ chat.timestamp }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form action="/kirim" method="POST" class="form-chat">
+        <input type="text" name="message" placeholder="Ketik pesan..." required>
+        <select name="sender">
+            <option value="Saya">Saya</option>
+            <option value="Teman">Teman</option>
+        </select>
+        <button type="submit">Kirim</button>
+    </form>
+</body>
+</html>
